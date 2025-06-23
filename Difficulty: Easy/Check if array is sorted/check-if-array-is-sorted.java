@@ -1,16 +1,21 @@
-// User function Template for Java
-
 class Solution {
     public boolean arraySortedOrNot(int[] arr) {
         // code here
-        int n=arr.length;
-        for(int i=0;i<n-1;i++){
-            if(arr[i]<=arr[i+1]){
-                continue;
-            }else{
-               return false;
-            }
+       int ans= helper(arr,0);
+      // System.out.print(ans);
+       if(ans==1){
+           return true;
+       }
+       return false;
+        
+    }
+    public static int helper(int [] arr,int idx){
+        if(idx==arr.length-1){
+          return 1  ;
         }
-        return true;
+        if(arr[idx]<=arr[idx+1]){
+           return helper(arr,idx+1);
+        }
+        return 0;
     }
 }
