@@ -8,22 +8,22 @@ class Solution {
         while(left<=right){
             int mid=left+(right-left)/2;
             
-            if(mid>left && arr[mid-1]==target){
-                return mid-1;
-            }else if(arr[mid]==target){
+            if(arr[mid]==target){
                 return mid;
             }
-            else if(mid< right && arr[mid+1]==target){
+            if(mid>left && arr[mid-1]==target){
+                return mid-1;
+            }
+            if(mid<right && arr[mid+1]==target){
                 return mid+1;
             }
-            else if(arr[mid]<target){
-                left=mid+1;
-            }
-            else{
-                right=mid-1;
+            if(arr[mid]<target){
+                left=mid+2;
+            }else{
+                right=mid-2;
             }
         }
-        return -1;
         
+        return -1;
     }
 }
