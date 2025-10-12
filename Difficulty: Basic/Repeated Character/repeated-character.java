@@ -1,21 +1,20 @@
 // User function Template for Java
 class Solution {
-    char firstRep(String str) {
+    char firstRep(String s) {
         // your code here
-        str=str.toLowerCase();
-        int [] arr= new int [26];
-        for(int i=0;i<str.length();i++){
-            char ch=str.charAt(i);
-            arr[ch-'a']++;
+        HashMap<Character,Integer> map = new HashMap<>();
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            map.put(ch,map.getOrDefault(ch,0)+1);
         }
         
-        for(int i=0;i<str.length();i++){
-            char ch=str.charAt(i);
-            if(arr[ch-'a']>1){
+        for(int i=0;i<s.length();i++){
+            char ch=s.charAt(i);
+            if(map.get(ch)>1){
                 return ch;
             }
         }
-
+        
         return '#';
     }
 }
