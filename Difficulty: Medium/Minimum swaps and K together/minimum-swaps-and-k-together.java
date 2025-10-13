@@ -4,33 +4,36 @@ class Solution {
     // Function for finding maximum and value pair
     int minSwap(int[] arr, int k) {
         // Complete the function
-        // total elements less than K
-        int less=0;
+        int goodElement=0;
         for(int i=0;i<arr.length;i++){
             if(arr[i]<=k){
-                less++;
+                goodElement++;
             }
         }
-        int morethank=0;
-        for(int i=0;i<less;i++){
+        int badElement=0; //in a given window 
+        for(int i=0;i<goodElement;i++){
             if(arr[i]>k){
-                morethank++;
+                badElement++;
+                
             }
         }
+        int minswap=badElement;
         
-        int min=morethank;
-        int j=less;
-        for(int i=0;i<arr.length-less;i++){
-            if(arr[i]>k ){
-                morethank--;
+        int start=1;
+        int end=goodElement;
+        while(end<arr.length){
+            if(arr[start-1]>k){
+                badElement--;
             }
-            if(arr[j]>k){
-                morethank++;
+            if(arr[end]>k){
+                badElement++;
             }
-            j++;
-            min=Math.min(morethank,min);
+            start++;
+            end++;
+            minswap=Math.min(minswap,badElement);
+            
         }
         
-        return min;
+        return minswap;
     }
 }
