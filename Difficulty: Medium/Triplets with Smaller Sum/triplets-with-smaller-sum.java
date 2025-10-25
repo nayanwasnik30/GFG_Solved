@@ -5,7 +5,7 @@ class Solution {
         //two pointer can be only applied on sorted array
         Arrays.sort(arr);
         int count=0;
-        for(int i=0;i<arr.length-2;i++){
+        for(int i=0;i<arr.length;i++){
             int left=i+1;
             int right=arr.length-1;
             while(left<right){
