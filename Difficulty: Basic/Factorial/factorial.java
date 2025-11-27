@@ -1,13 +1,18 @@
 class Solution {
     // Function to calculate factorial of a number.
-    int fact=1;
     int factorial(int n) {
         // code here
-        if(n==0){
+        long ans=helper(n);
+        return (int)ans;
+        
+    }
+    
+    long helper(int n){
+        if(n==1){
             return 1;
         }
-        fact=fact*n;
-        factorial(n-1);
-        return fact;
+        
+        long ans=n*helper(n-1);
+        return ans;
     }
 }
